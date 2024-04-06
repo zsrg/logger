@@ -5,7 +5,7 @@ simple node.js logger with request logger middleware
 ## Usage
 
 ```ts
-import Logger from "logger";
+import Logger, { HttpLogger } from "logger";
 ```
 
 ### Setting logging level
@@ -60,11 +60,32 @@ Output:
 [06-04-2024 15:36:28] [TRACE] Trace log
 ```
 
+### Setting request logger middleware
+
+Requests with response statuses less than 400 have the `INFO` level, more - `ERROR`.
+For request data, it is possible to set a custom format. The function takes arguments: `req`, `res` and must return a string. Default log format: `method url statusCode`.
+
+```ts
+const httpLogger = new HttpLogger(Logger);
+
+httpLogger.setFormatter((req: Request, res: Response) => {
+  return `${req.method} ${req.url} ${res.statusCode}`;
+});
+
+app.use(httpLogger.loggerMiddleware);
+```
+
+Output:
+
+```
+[06-04-2024 16:32:23] [ERROR] GET /test 404
+```
+
 ## Example
 
 ```ts
-import express, { Response } from "express";
-import Logger from "logger";
+import express, { Request, Response } from "express";
+import Logger, { HttpLogger } from "logger";
 import path from "path";
 
 const PORT = 3000;
@@ -80,6 +101,14 @@ Logger.setFile(LOGS_FOLDER, "{{DATE}}.log");
 Logger.setFormatter((date: string, level: string, message: string) => {
   return `[${date}] [${level}] ${message}`;
 });
+
+const httpLogger = new HttpLogger(Logger);
+
+httpLogger.setFormatter((req: Request, res: Response) => {
+  return `${req.method} ${req.url} ${res.statusCode}`;
+});
+
+app.use(httpLogger.loggerMiddleware);
 
 app.get("/", (_, res: Response) => {
   res.status(200).send();
