@@ -2,6 +2,18 @@
 
 simple node.js logger with request logger middleware
 
+## Installation
+
+```
+npm i github:zsrg/logger
+```
+
+Peer dependencies:
+
+- `@types/express`
+- `@types/node`
+- `typescript`
+
 ## Usage
 
 ```ts
