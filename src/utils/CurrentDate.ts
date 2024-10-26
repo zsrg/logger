@@ -10,7 +10,7 @@ class CurrentDate {
     const m = this.numberToString(this.date.getMonth() + 1);
     const y = this.numberToString(this.date.getFullYear());
 
-    return `${d}-${m}-${y}`;
+    return `${y}-${m}-${d}`;
   }
 
   public getTime() {

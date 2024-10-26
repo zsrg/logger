@@ -2,8 +2,8 @@ import Formatter from "./Formatter";
 import { Request, Response } from "express";
 
 describe("Formatter", () => {
-  test("logFormatter('06-04-2024 16:44:20', 'ERROR', 'Error log') => '[06-04-2024 16:44:20] [ERROR] Error log'", () => {
-    expect(Formatter.logFormatter("06-04-2024 16:44:20", "ERROR", "Error log")).toBe("[06-04-2024 16:44:20] [ERROR] Error log");
+  test("logFormatter('2024-04-06 16:44:20', 'ERROR', 'Error log') => '[2024-04-06 16:44:20] [ERROR] Error log'", () => {
+    expect(Formatter.logFormatter("2024-04-06 16:44:20", "ERROR", "Error log")).toBe("[2024-04-06 16:44:20] [ERROR] Error log");
   });
 
   test("requestDataFormatter({ method: 'GET', url: '/test' }, { statusCode: 404 }) => 'GET /test 404'", () => {

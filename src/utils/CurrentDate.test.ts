@@ -6,16 +6,16 @@ describe("CurrentDate", () => {
   // @ts-ignore
   currentDate.date = new Date("06 Apr 2024 16:44:20");
 
-  test("getDate() => '06-04-2024'", () => {
-    expect(currentDate.getDate()).toBe("06-04-2024");
+  test("getDate() => '2024-04-06'", () => {
+    expect(currentDate.getDate()).toBe("2024-04-06");
   });
 
   test("getTime() => '16:44:20'", () => {
     expect(currentDate.getTime()).toBe("16:44:20");
   });
 
-  test("getDateTime() => '06-04-2024 16:44:20'", () => {
-    expect(currentDate.getDateTime()).toBe("06-04-2024 16:44:20");
+  test("getDateTime() => '2024-04-06 16:44:20'", () => {
+    expect(currentDate.getDateTime()).toBe("2024-04-06 16:44:20");
   });
 
   test("numberToString(1) => '01'", () => {

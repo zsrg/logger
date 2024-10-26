@@ -64,12 +64,12 @@ Logger.trace("Trace log");
 Output:
 
 ```
-[06-04-2024 15:36:28] [CRITICAL] Critical log
-[06-04-2024 15:36:28] [ERROR] Error log
-[06-04-2024 15:36:28] [WARN] Warning log
-[06-04-2024 15:36:28] [INFO] Information log
-[06-04-2024 15:36:28] [DEBUG] Debug log
-[06-04-2024 15:36:28] [TRACE] Trace log
+[2024-04-06 15:36:28] [CRITICAL] Critical log
+[2024-04-06 15:36:28] [ERROR] Error log
+[2024-04-06 15:36:28] [WARN] Warning log
+[2024-04-06 15:36:28] [INFO] Information log
+[2024-04-06 15:36:28] [DEBUG] Debug log
+[2024-04-06 15:36:28] [TRACE] Trace log
 ```
 
 ### Setting request logger middleware
@@ -90,7 +90,7 @@ app.use(httpLogger.loggerMiddleware);
 Output:
 
 ```
-[06-04-2024 16:32:23] [ERROR] GET /test 404
+[2024-04-06 16:32:23] [ERROR] GET /test 404
 ```
 
 ## Example
