@@ -25,8 +25,8 @@ class CurrentDate {
     return `${this.getDate()} ${this.getTime()}`;
   }
 
-  private numberToString(value: number) {
-    return value < 10 ? `0${value}` : String(value);
+  private numberToString(value: number, length: number = 2) {
+    return String(value).padStart(length, "0");
   }
 }
 

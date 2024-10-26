@@ -27,4 +27,9 @@ describe("CurrentDate", () => {
     // @ts-ignore
     expect(currentDate.numberToString(10)).toBe("10");
   });
+
+  test("numberToString(1, 4) => '0001'", () => {
+    // @ts-ignore
+    expect(currentDate.numberToString(1, 4)).toBe("0001");
+  });
 });
