@@ -52,6 +52,8 @@ Logger.setFile(LOGS_FOLDER, "{{DATE}}.log");
 
 ### Using logging
 
+Multiple arguments can be passed, which are converted using [`util.format`](https://nodejs.org/api/util.html#utilformatformat-args), similar [`console.log`](https://nodejs.org/api/console.html#consolelogdata-args).
+
 ```ts
 Logger.critical("Critical log");
 Logger.error("Error log");

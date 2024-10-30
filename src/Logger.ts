@@ -2,6 +2,7 @@ import CurrentDate from "./utils/CurrentDate";
 import FileOutput from "./output/FileOutput";
 import ConsoleOutput from "./output/ConsoleOutput";
 import Formatter from "./utils/Formatter";
+import { format } from "util";
 
 enum LogLevels { CRITICAL, ERROR, WARN, INFO, DEBUG, TRACE }
 
@@ -19,12 +20,12 @@ class Logger {
 
   private formatter: LogFormatter;
 
-  public critical: (message: string) => void;
-  public error: (message: string) => void;
-  public warn: (message: string) => void;
-  public info: (message: string) => void;
-  public debug: (message: string) => void;
-  public trace: (message: string) => void;
+  public critical: (message?: any, ...optionalParams: any[]) => void;
+  public error: (message?: any, ...optionalParams: any[]) => void;
+  public warn: (message?: any, ...optionalParams: any[]) => void;
+  public info: (message?: any, ...optionalParams: any[]) => void;
+  public debug: (message?: any, ...optionalParams: any[]) => void;
+  public trace: (message?: any, ...optionalParams: any[]) => void;
 
   constructor() {
     this.level = LogLevels.INFO;
@@ -61,13 +62,13 @@ class Logger {
     levels.forEach((level: Level) => (this[level.toLowerCase()] = this.log.bind(this, level)));
   }
 
-  private log(level: Level, message: string) {
+  private log(level: Level, message?: any, ...optionalParams: any[]) {
     if (this.level < LogLevels[level]) {
       return;
     }
 
     const date = new CurrentDate().getDateTime();
-    const log = this.formatter(date, level, message);
+    const log = this.formatter(date, level, format(message, ...optionalParams));
 
     this.console.log(log);
     this.file?.log(log);
