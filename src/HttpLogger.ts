@@ -1,6 +1,6 @@
+import Formatter from "./utils/Formatter";
 import Logger from "./Logger";
 import { NextFunction, Request, Response } from "express";
-import Formatter from "./utils/Formatter";
 
 type RequestDataFormatter = (req: Request, res: Response) => string;
 

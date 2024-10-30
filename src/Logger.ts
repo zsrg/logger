@@ -1,6 +1,6 @@
+import ConsoleOutput from "./output/ConsoleOutput";
 import CurrentDate from "./utils/CurrentDate";
 import FileOutput from "./output/FileOutput";
-import ConsoleOutput from "./output/ConsoleOutput";
 import Formatter from "./utils/Formatter";
 import { format } from "util";
 

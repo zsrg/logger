@@ -1,5 +1,5 @@
-import * as tty from "tty";
 import * as fs from "fs";
+import * as tty from "tty";
 
 type Stream = tty.WriteStream | fs.WriteStream;
 

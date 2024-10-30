@@ -1,7 +1,7 @@
-import { createWriteStream, existsSync } from "fs";
 import CurrentDate from "../utils/CurrentDate";
-import { join } from "path";
 import Output from "./Output";
+import { createWriteStream, existsSync } from "fs";
+import { join } from "path";
 
 const FILE_NAME_PATTERN = /{{(.+?)}}/;
 
