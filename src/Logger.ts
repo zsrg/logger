@@ -1,14 +1,12 @@
 import ConsoleOutput from "./output/ConsoleOutput";
 import CurrentDate from "./utils/CurrentDate";
 import FileOutput from "./output/FileOutput";
-import Formatter from "./utils/Formatter";
+import Formatter, { LogFormatter } from "./utils/Formatter";
 import { format } from "util";
 
 enum LogLevels { CRITICAL, ERROR, WARN, INFO, DEBUG, TRACE }
 
 type Level = keyof typeof LogLevels;
-
-type LogFormatter = (date: string, level: string, message: string) => string;
 
 class Logger {
   private static instance: Logger;

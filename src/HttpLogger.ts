@@ -1,8 +1,6 @@
-import Formatter from "./utils/Formatter";
+import Formatter, { RequestDataFormatter } from "./utils/Formatter";
 import Logger from "./Logger";
 import { NextFunction, Request, Response } from "express";
-
-type RequestDataFormatter = (req: Request, res: Response) => string;
 
 class HttpLogger {
   private logger: Logger;
