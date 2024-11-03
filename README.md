@@ -77,13 +77,20 @@ Output:
 ### Setting request logger middleware
 
 Requests with response statuses less than 400 have the `INFO` level, more - `ERROR`.
+
 For request data, it is possible to set a custom format. The function takes arguments: `req`, `res` and must return a string. Default log format: `method url statusCode`.
+
+Filtering of requests is also available. Similar to formatter the function takes arguments: `req`, `res`. It must return a boolean. By default, all requests are logged.
 
 ```ts
 const httpLogger = new HttpLogger(Logger);
 
 httpLogger.setFormatter((req: Request, res: Response) => {
   return `${req.method} ${req.url} ${res.statusCode}`;
+});
+
+httpLogger.setFilter((req: Request, res: Response) => {
+  return res.statusCode >= 400;
 });
 
 app.use(httpLogger.loggerMiddleware);
@@ -120,6 +127,10 @@ const httpLogger = new HttpLogger(Logger);
 
 httpLogger.setFormatter((req: Request, res: Response) => {
   return `${req.method} ${req.url} ${res.statusCode}`;
+});
+
+httpLogger.setFilter((req: Request, res: Response) => {
+  return res.statusCode >= 400;
 });
 
 app.use(httpLogger.loggerMiddleware);
