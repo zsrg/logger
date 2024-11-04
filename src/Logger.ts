@@ -1,20 +1,23 @@
 import ConsoleOutput from "./output/ConsoleOutput";
 import CurrentDate from "./utils/CurrentDate";
+import CustomOutput from "./output/CustomOutput";
 import FileOutput from "./output/FileOutput";
 import Formatter, { LogFormatter } from "./utils/Formatter";
 import { format } from "util";
+import { Stream } from "./output/Output";
 
 enum LogLevels { CRITICAL, ERROR, WARN, INFO, DEBUG, TRACE }
 
 type Level = keyof typeof LogLevels;
 
+type Outputs = ConsoleOutput | FileOutput | CustomOutput;
+
 class Logger {
   private static instance: Logger;
 
-  private level: LogLevels;
+  private outputs: Outputs[];
 
-  private file: FileOutput;
-  private console: ConsoleOutput;
+  private level: LogLevels;
 
   private formatter: LogFormatter;
 
@@ -28,8 +31,7 @@ class Logger {
   constructor() {
     this.level = LogLevels.INFO;
 
-    this.file = null;
-    this.console = new ConsoleOutput();
+    this.outputs = [new ConsoleOutput()];
 
     this.formatter = Formatter.logFormatter;
 
@@ -52,7 +54,11 @@ class Logger {
   }
 
   public setFile(path: string, name: string) {
-    this.file = new FileOutput(path, name);
+    this.outputs.push(new FileOutput(path, name));
+  }
+
+  public setStream(stream: Stream) {
+    this.outputs.push(new CustomOutput(stream));
   }
 
   private init() {
@@ -68,8 +74,7 @@ class Logger {
     const date = new CurrentDate().getDateTime();
     const log = this.formatter(date, level, format(message, ...optionalParams));
 
-    this.console.log(log);
-    this.file?.log(log);
+    this.outputs.forEach((output: Outputs) => output.log(log));
   }
 }
 

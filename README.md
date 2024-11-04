@@ -40,8 +40,6 @@ Logger.setFormatter((date: string, level: string, message: string) => {
 
 ### Configuring logging to file
 
-If not specified, logs will only be output to the console.
-
 Available filename patterns:
 
 - `{{DATE}}` - current date
@@ -49,6 +47,14 @@ Available filename patterns:
 ```ts
 Logger.setFile(LOGS_FOLDER, "{{DATE}}.log");
 ```
+
+### Configuring logging to stream
+
+```ts
+Logger.setStream(stream);
+```
+
+If logging to file or stream not specified, logs will only be output to the console.
 
 ### Using logging
 
