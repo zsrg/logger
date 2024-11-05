@@ -157,6 +157,10 @@ In the project directory, you can run:
 - `npm run build` - builds the library
 - `npm run test` - runs the tests
 
+## Changelog
+
+[CHANGELOG](./CHANGELOG.md)
+
 ## License
 
 [MIT](./LICENSE)
