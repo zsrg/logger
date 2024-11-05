@@ -25,6 +25,14 @@ class CurrentDate {
     return `${this.getDate()} ${this.getTime()}`;
   }
 
+  public getMidnightOffset() {
+    const nextDate = new Date(this.date);
+    nextDate.setDate(this.date.getDate() + 1);
+    nextDate.setHours(0, 0, 0, 0);
+
+    return nextDate.valueOf() - this.date.valueOf();
+  }
+
   private numberToString(value: number, length: number = 2) {
     return String(value).padStart(length, "0");
   }

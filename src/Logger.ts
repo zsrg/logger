@@ -1,7 +1,7 @@
 import ConsoleOutput from "./output/ConsoleOutput";
 import CurrentDate from "./utils/CurrentDate";
 import CustomOutput from "./output/CustomOutput";
-import FileOutput from "./output/FileOutput";
+import FileOutput, { FileOutputParams } from "./output/FileOutput";
 import Formatter, { LogFormatter } from "./utils/Formatter";
 import { format } from "util";
 import { Stream } from "./output/Output";
@@ -53,8 +53,8 @@ class Logger {
     this.formatter = formatter;
   }
 
-  public setFile(path: string, name: string) {
-    this.outputs.push(new FileOutput(path, name));
+  public setFile(path: string, name: string, params?: FileOutputParams) {
+    this.outputs.push(new FileOutput(path, name, params));
   }
 
   public setStream(stream: Stream) {

@@ -42,10 +42,10 @@ Logger.setFormatter((date: string, level: string, message: string) => {
 
 Available filename patterns:
 
-- `{{DATE}}` - current date
+- `{{DATE}}` - current date, the `midnightRotation` parameter is available
 
 ```ts
-Logger.setFile(LOGS_FOLDER, "{{DATE}}.log");
+Logger.setFile(LOGS_FOLDER, "{{DATE}}.log", { midnightRotation: true });
 ```
 
 ### Configuring logging to stream
@@ -123,7 +123,7 @@ const app = express();
 
 Logger.setLevel(LOGS_LEVEL);
 
-Logger.setFile(LOGS_FOLDER, "{{DATE}}.log");
+Logger.setFile(LOGS_FOLDER, "{{DATE}}.log", { midnightRotation: true });
 
 Logger.setFormatter((date: string, level: string, message: string) => {
   return `[${date}] [${level}] ${message}`;

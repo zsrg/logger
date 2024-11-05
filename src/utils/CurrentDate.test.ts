@@ -18,6 +18,10 @@ describe("CurrentDate", () => {
     expect(currentDate.getDateTime()).toBe("2024-04-06 16:44:20");
   });
 
+  test("getMidnightOffset() => '26140000'", () => {
+    expect(currentDate.getMidnightOffset()).toBe(26140000);
+  });
+
   test("numberToString(1) => '01'", () => {
     // @ts-ignore
     expect(currentDate.numberToString(1)).toBe("01");
