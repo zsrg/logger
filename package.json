@@ -3,6 +3,7 @@
   "description": "simple node.js logger with request logger middleware",
   "private": true,
   "version": "0.1.0",
+  "license": "MIT",
   "main": "./build/index.js",
   "scripts": {
     "build": "tsc",

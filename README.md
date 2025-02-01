@@ -7,3 +7,7 @@ simple node.js logger with request logger middleware
 In the project directory, you can run:
 
 - `npm run build` - builds the library
+
+## License
+
+[MIT](./LICENSE)
