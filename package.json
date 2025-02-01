@@ -1,0 +1,14 @@
+{
+  "name": "logger",
+  "description": "simple node.js logger with request logger middleware",
+  "private": true,
+  "version": "0.1.0",
+  "main": "./build/index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3"
+  }
+}
