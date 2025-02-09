@@ -28,6 +28,13 @@ class CustomDate {
     return `${date} ${time}`;
   }
 
+  public getMidnightOffset() {
+    const date = new Date(this.date);
+    date.setHours(24, 0, 0, 0);
+
+    return date.valueOf() - this.date.valueOf();
+  }
+
   private numberToString(value: number, length = 2) {
     return String(value).padStart(length, "0");
   }
