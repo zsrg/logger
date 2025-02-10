@@ -142,6 +142,7 @@ app.listen(PORT, () => {
 In the project directory, you can run:
 
 - `npm run build` - builds the library
+- `npm run test` - runs the tests
 
 ## License
 
